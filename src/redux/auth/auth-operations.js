@@ -13,9 +13,29 @@ const token = {
   },
 };
 
-const register = credentials => dispatch => {};
+const register = credentials => async dispatch => {
+  dispatch(authActions.registerRequest());
 
-const logIn = credentials => dispatch => {};
+try {
+ const response = await axios.post('/users/signup', credentials);
+
+dispatch(authActions.registerSuccess(response.data));
+} catch (error) {
+  dispatch(authActions.registerError(error.message));
+}
+};
+
+const logIn = credentials => async dispatch => {
+  dispatch(authActions.loignRequest());
+
+try {
+ const response = await axios.post('/users/login', credentials);
+
+dispatch(authActions.loginSuccess(response.data));
+} catch (error) {
+  dispatch(authActions.loginError(error.message));
+}
+};
 
 const logOut = () => dispatch => {};
 
