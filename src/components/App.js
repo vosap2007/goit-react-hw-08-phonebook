@@ -9,15 +9,13 @@ import Filter from './Filter';
 import Input from './Input';
 import Contacts from "./Contacts";
 import Alert from './Alert';
-import ContactsViev from '../views/ContactsViev';
+//import ContactsViev from '../views/ContactsViev';
 import HomeViev from '../views/HomeViev';
 import LoginViev from '../views/LoginViev';
 import RegisterViev from '../views/RegisterViev';
 import contactsOperations from "../redux/contacts/contacts-operations";
 import styles from '../css/PhoneBook.module.css';
 import '../css/animation.css';
-
-
 
 
 class App extends Component {
@@ -57,7 +55,7 @@ class App extends Component {
           <Route exact path="/" component={HomeViev} />
           <Route path="/register" component={RegisterViev} />
           <Route path="/login" component={LoginViev} />
-          <Route path="/contacts" component={ContactsViev} />
+          {/*<Route path="/contacts" component={ContactsViev} />*/}
         </Switch>
       </Container>
 

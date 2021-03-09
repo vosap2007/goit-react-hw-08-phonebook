@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {authSelectors} from '../redux/auth';
+import defaultAvatar from '../redux/auth/default-avatar.png'
 
 const styles = {
     container: {
@@ -24,4 +27,9 @@ const styles = {
       </div>
   );
 
-  export default UserMenu;
+  const mapStateToProps = state => ({
+    name: authSelectors.getUsername(state),
+    avatar: defaultAvatar,
+});
+
+  export default connect(mapStateToProps)(UserMenu);

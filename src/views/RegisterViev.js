@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import reactDom from 'react-dom';
-import {connect, ReactReduxContext} from 'react-redux';
+//import reactDom from 'react-dom';
+import {connect, /*ReactReduxContext*/} from 'react-redux';
 import {authOperations} from '../redux/auth';
 
 const styles = {
