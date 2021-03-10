@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import reactDom from 'react-dom';
-import {connect, /*ReactReduxContext*/} from 'react-redux';
-import {authOperations} from '../redux/auth';
+import { connect, /*ReactReduxContext*/ } from 'react-redux';
+import { authOperations } from '../redux/auth';
 
 const styles = {
   form: {
@@ -15,66 +15,66 @@ const styles = {
 };
 
 class RegisterView extends Component {
-    state = {
-        name: '',
-        email: '',
-        password: '',
-    };
+  state = {
+    name: '',
+    email: '',
+    password: '',
+  };
 
-    handleChange = ({ target: { name, value } }) => {
-        this.setState({[name]: value }); 
-      };
-    
-      handleSubmit = e => {
-        e.preventDefault();
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
 
-        this.props.onRegister(this.state);
-    
-        this.setState({name:'', email:'', password:''});
-      };
+  handleSubmit = e => {
+    e.preventDefault();
 
-      render() {
-        const {name, email, password} = this.state;
+    this.props.onRegister(this.state);
 
-  return (
-    <div>
-      <h1>Страница регистрации</h1>
+    this.setState({ name: '', email: '', password: '' });
+  };
 
-      <form onSubmit={this.handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
+  render() {
+    const { name, email, password } = this.state;
+
+    return (
+      <div>
+        <h1>Страница регистрации</h1>
+
+        <form onSubmit={this.handleSubmit} style={styles.form} autoComplete="off">
+          <label style={styles.label}>
+            Имя
           <input type="text" name="name" value={name} onChange={this.handleChange} />
-        </label>
+          </label>
 
-        <label style={styles.label}>
-          Почта
+          <label style={styles.label}>
+            Почта
           <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-        </label>
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+          </label>
 
-        <label style={styles.label}>
-          Пароль
+          <label style={styles.label}>
+            Пароль
           <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-        </label>
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </label>
 
-        <button type="submit">Зарегистрироваться</button>
-      </form>
-    </div>
-  );
-};
+          <button type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+    );
+  };
 };
 
 const mapDispathToProps = {
-onRegister: authOperations.register,
-}
+  onRegister: authOperations.register,
+};
 
 export default connect(null, mapDispathToProps)(RegisterView);

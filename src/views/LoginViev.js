@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {connect, /*ReactReduxContext*/} from 'react-redux';
-import {authOperations} from '../redux/auth';
+import { connect, /*ReactReduxContext*/ } from 'react-redux';
+import { authOperations } from '../redux/auth';
 
 const styles = {
   form: {
@@ -15,12 +15,12 @@ const styles = {
 
 class LoginView extends Component {
   state = {
-      email: '',
-      password: '',
+    email: '',
+    password: '',
   };
 
   handleChange = ({ target: { name, value } }) => {
-    this.setState({[name]: value }); 
+    this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
@@ -28,50 +28,50 @@ class LoginView extends Component {
 
     this.props.onLogin(this.state);
 
-    this.setState({name:'', email:'', password:''});
+    this.setState({ name: '', email: '', password: '' });
   };
 
   render() {
-      const {email, password} = this.state;
+    const { email, password } = this.state;
 
-  return (
-    <div>
-      <h1>Страница логина</h1>
+    return (
+      <div>
+        <h1>Страница логина</h1>
 
-      <form 
-      onSubmit={this.handleSubmit} 
-      style={styles.form} 
-      autoComplete="off">
+        <form
+          onSubmit={this.handleSubmit}
+          style={styles.form}
+          autoComplete="off">
 
-        <label style={styles.label}>
-          Почта
+          <label style={styles.label}>
+            Почта
           <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-        </label>
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+          </label>
 
-        <label style={styles.label}>
-          Пароль
+          <label style={styles.label}>
+            Пароль
           <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-        </label>
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </label>
 
-        <button type="submit">Войти</button>
-      </form>
-    </div>
-  ); 
-};
+          <button type="submit">Войти</button>
+        </form>
+      </div>
+    );
+  };
 };
 
 const mapDispathToProps = {
   onLogin: authOperations.logIn,
-  }
-  
-  export default connect(null, mapDispathToProps)(LoginView);
+}
+
+export default connect(null, mapDispathToProps)(LoginView);

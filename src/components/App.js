@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
-import Container from './Container';
+//import Container from './Container';
 import AppBar from './AppBar';
 import Filter from './Filter';
 import Input from './Input';
@@ -19,7 +19,6 @@ import '../css/animation.css';
 
 
 class App extends Component {
-
   state = {
     showTitle: false,
     error: false,
@@ -37,27 +36,27 @@ class App extends Component {
     }, 3000);
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     axios.get('http://localhost:3000/contacts')
       .then(resp => console.log(resp.data))
 
-      this.props.fetchContacts();
-  }
+    this.props.fetchContacts();
+  }*/
 
   render() {
     return (
       <>
 
-      < Container>
-        <AppBar/>
+        <div>
+          <AppBar />
 
-        <Switch>
-          <Route exact path="/" component={HomeViev} />
-          <Route path="/register" component={RegisterViev} />
-          <Route path="/login" component={LoginViev} />
-          {/*<Route path="/contacts" component={ContactsViev} />*/}
-        </Switch>
-      </Container>
+          <Switch>
+            <Route exact path="/" component={HomeViev} />
+            <Route path="/register" component={RegisterViev} />
+            <Route path="/login" component={LoginViev} />
+          </Switch>
+        </div>
+
 
         <div className={styles.box}>
 
