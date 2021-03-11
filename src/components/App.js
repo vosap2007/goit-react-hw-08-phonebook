@@ -14,6 +14,7 @@ import HomeViev from '../views/HomeViev';
 import LoginViev from '../views/LoginViev';
 import RegisterViev from '../views/RegisterViev';
 import contactsOperations from "../redux/contacts/contacts-operations";
+import authOperations from "../redux/auth/auth-operations";
 import styles from '../css/PhoneBook.module.css';
 import '../css/animation.css';
 
@@ -36,12 +37,15 @@ class App extends Component {
     }, 3000);
   }
 
-  /*componentDidMount() {
+  componentDidMount() {
+    this.props.onGetCurrentUser();
+
     axios.get('http://localhost:3000/contacts')
       .then(resp => console.log(resp.data))
 
     this.props.fetchContacts();
-  }*/
+    
+  }
 
   render() {
     return (
@@ -104,6 +108,7 @@ class App extends Component {
 };
 
 const mapDispatchToProps = dispatcs => ({
+  onGetCurrentUser: authOperations.getCurrentUser,
   fetchContacts: () => dispatcs(contactsOperations.fetchContacts()),
 });
 
