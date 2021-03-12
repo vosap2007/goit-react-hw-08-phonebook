@@ -1,49 +1,76 @@
-/*import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Container from '../components/Container';
-import TodoList from '../components/TodoList';
-import TodoEditor from '../components/TodoEditor';
-import Filter from '../components/TodoFilter';
-import Stats from '../components/Stats';
-import Modal from '../components/Modal';
-import IconButton from '../components/IconButton';
-import { ReactComponent as AddIcon } from '../icons/add.svg';
-import { todosOperations, todosSelectors } from '../redux/todos';
+import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import Filter from '../components/Filter';
+import Input from '../components/Input';
+import Contacts from "../components/Contacts";
+import Alert from '../components/Alert';
+import styles from '../css/PhoneBook.module.css';
+import '../css/animation.css';
 
-const barStyles = {
-  display: 'flex',
-  alignItems: 'flex-end',
-  marginBottom: 20,
+class ContactsViev extends Component {
+   state = {
+    showTitle: false,
+   error: false,
+  }
+
+  updateData = (value) => {
+    this.setState({ error: value })
+
+    setTimeout(() => {
+      this.setState(() => {
+        return {
+          error: false
+        };
+      });
+    }, 3000);
+  }
+
+  render() {
+  return (
+    <>
+      <div className={styles.box}>
+
+<CSSTransition
+  in={this.state.error}
+  appear={true}
+  classNames='error'
+  timeout={250}
+  unmountOnExit>
+  <Alert />
+</CSSTransition>
+
+<CSSTransition
+  in={true}
+  appear={true}
+  classNames='fade'
+  timeout={500}
+  unmountOnExit>
+  <h1 className={styles.phonebook}>Phonebook</h1>
+</CSSTransition>
+
+<Input updateData={this.updateData} />
+<h2 className={styles.title}>Contacts</h2>
+
+<CSSTransition
+  in={true}
+  timeout={250}
+  classNames='fade'
+  unmountOnExit>
+  <Filter />
+</CSSTransition>
+
+<CSSTransition
+  in={true}
+  timeout={250}
+  classNames='fade'
+  unmountOnExit>
+  <Contacts />
+</CSSTransition>
+
+</div>
+    </>
+  );
+}
 };
 
-export default function TodosView(params) {
-  const dispatch = useDispatch();
-  const isLoadingTodos = useSelector(todosSelectors.getLoading);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleModal = () => setIsModalOpen(state => !state);
-
-  useEffect(() => dispatch(todosOperations.fetchTodos()), [dispatch]);
-
-  return (
-    <Container>
-      <div style={barStyles}>
-        <Filter />
-        <Stats />
-        <IconButton onClick={toggleModal} aria-label="Добавить todo">
-          <AddIcon width="40" height="40" fill="#fff" />
-        </IconButton>
-
-        {isLoadingTodos && <h1>Загружаем...</h1>}
-      </div>
-
-      <TodoList />
-
-      {isModalOpen && (
-        <Modal onClose={toggleModal}>
-          <TodoEditor onSave={toggleModal} />
-        </Modal>
-      )}
-    </Container>
-  );
-}*/
+export default ContactsViev;
