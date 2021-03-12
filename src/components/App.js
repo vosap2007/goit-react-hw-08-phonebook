@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import axios from 'axios';
+//import axios from 'axios';
 //import Container from './Container';
 import AppBar from './AppBar';
 import Filter from './Filter';
@@ -13,7 +13,7 @@ import Alert from './Alert';
 import HomeViev from '../views/HomeViev';
 import LoginViev from '../views/LoginViev';
 import RegisterViev from '../views/RegisterViev';
-import contactsOperations from "../redux/contacts/contacts-operations";
+//import contactsOperations from "../redux/contacts/contacts-operations";
 import authOperations from "../redux/auth/auth-operations";
 import styles from '../css/PhoneBook.module.css';
 import '../css/animation.css';
@@ -40,10 +40,10 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetCurrentUser();
 
-    axios.get('http://localhost:3000/contacts')
+    /*axios.get('http://localhost:3000/contacts')
       .then(resp => console.log(resp.data))
 
-    this.props.fetchContacts();
+    this.props.fetchContacts();*/
     
   }
 
@@ -107,9 +107,9 @@ class App extends Component {
   }
 };
 
-const mapDispatchToProps = dispatcs => ({
+const mapDispatchToProps = /*dispatcs =>*/ ({
   onGetCurrentUser: authOperations.getCurrentUser,
-  fetchContacts: () => dispatcs(contactsOperations.fetchContacts()),
+  //fetchContacts: () => dispatcs(contactsOperations.fetchContacts()),
 });
 
 export default connect(null, mapDispatchToProps)(App);
