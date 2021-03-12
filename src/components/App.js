@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router';
+import { Switch } from 'react-router';
 import { connect } from 'react-redux';
 //import { CSSTransition } from 'react-transition-group';
 //import axios from 'axios';
@@ -16,6 +16,8 @@ import RegisterViev from '../views/RegisterViev';
 import ContactsViev from '../views/ContactsViev';
 //import contactsOperations from "../redux/contacts/contacts-operations";
 import authOperations from "../redux/auth/auth-operations";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 //import styles from '../css/PhoneBook.module.css';
 //import '../css/animation.css';
 
@@ -56,10 +58,10 @@ class App extends Component {
           <AppBar />
 
           <Switch>
-            <Route exact path="/" component={HomeViev} />
-            <Route path="/register" component={RegisterViev} />
-            <Route path="/login" component={LoginViev} />
-            <Route path="/contacts" component={ContactsViev} />
+            <PublicRoute exact path="/" component={HomeViev} />
+            <PublicRoute path="/register" restricted component={RegisterViev} />
+            <PublicRoute path="/login" restricted component={LoginViev} />
+            <PrivateRoute path="/contacts" component={ContactsViev} />
           </Switch>
         </div>
       </>
