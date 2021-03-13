@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch } from 'react-router';
 import { connect } from 'react-redux';
 //import { CSSTransition } from 'react-transition-group';
@@ -59,9 +60,9 @@ class App extends Component {
 
           <Switch>
             <PublicRoute exact path="/" component={HomeViev} />
-            <PublicRoute path="/register" restricted component={RegisterViev} />
-            <PublicRoute path="/login" restricted component={LoginViev} />
-            <PrivateRoute path="/contacts" component={ContactsViev} />
+            <PublicRoute path="/register" redirectTo = '/contacts' restricted component={RegisterViev} />
+            <PublicRoute path="/login" redirectTo = '/contacts' restricted component={LoginViev} />
+            <PrivateRoute path="/contacts" redirectTo = '/login' component={ContactsViev} />
           </Switch>
         </div>
       </>
