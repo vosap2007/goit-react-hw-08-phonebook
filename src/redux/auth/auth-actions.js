@@ -16,17 +16,17 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
-export default { 
-    registerRequest,
-    registerSuccess,
-    registerError,
-    loginRequest,
-    loginSuccess,
-    loginError,
-    logoutRequest,
-    logoutSuccess,
-    logoutError,
-    getCurrentUserRequest,
-    getCurrentUserSuccess,
-    getCurrentUserError,
- };
+export default {
+  registerRequest,
+  registerSuccess,
+  registerError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
+  loginRequest,
+  loginSuccess,
+  loginError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
+};
