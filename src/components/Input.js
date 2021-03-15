@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import contactsOperations from "../redux/contacts/contacts-operations";
 import styles from '../css/PhoneBook.module.css';
 import contactsSelectors from "../redux/contacts/contacts-selectors";
+import {Button} from "react-bootstrap";
 
 class Input extends Component {
   state = {
@@ -59,7 +60,11 @@ class Input extends Component {
            onChange={this.handleInputChange}
                name="number" />
            </label><br/>
-           <button className={styles.button} type="submit">Add contact</button>
+           <Button 
+        type="submit" 
+        variant="primary">Add contact
+        </Button>
+           {/*<button className={styles.button} type="submit">Add contact</button>*/}
          </form>
       </div>
     ); 

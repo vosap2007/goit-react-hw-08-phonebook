@@ -23,7 +23,11 @@ class ContactsViev extends Component {
         };
       });
     }, 3000);
-  }
+  };
+
+  componentDidMount() {
+    this.props.fetchContacts();
+  };
 
   render() {
   return (

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import contactsOperations from "../redux/contacts/contacts-operations";
 import styles from '../css/PhoneBook.module.css'; 
 import contactsSelectors from "../redux/contacts/contacts-selectors";
+import {Button} from "react-bootstrap";
 
 const Contacts = ({contacts, deleteContacts}) => (
 
@@ -16,9 +17,14 @@ const Contacts = ({contacts, deleteContacts}) => (
             <li className={styles.contact} >
             <p className={styles.text}>{contact.name}: {contact.number}</p>
             <section className={styles.gid}>
-                    <button type="button" className={styles.button}
+                    {/*<button type="button" className={styles.button}
                         onClick={() => deleteContacts(contact.id)}>
-                        Delete</button>
+        Delete</button>*/}
+        <Button 
+        type="button" 
+        onClick={() => deleteContacts(contact.id)} 
+        variant="primary">Delete
+        </Button>
             </section>
         </li>
         </CSSTransition>
