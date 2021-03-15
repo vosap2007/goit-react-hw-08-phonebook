@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import contactsOperations  from '../redux/contacts/contacts-operations';
 import Filter from '../components/Filter';
 import Input from '../components/Input';
 import Contacts from "../components/Contacts";
@@ -77,4 +79,10 @@ class ContactsViev extends Component {
 }
 };
 
-export default ContactsViev;
+const mapDispatchToProps = {
+  fetchContacts: contactsOperations.fetchContacts,
+};
+
+export default connect(null, mapDispatchToProps)(ContactsViev);
+
+//export default ContactsViev;
